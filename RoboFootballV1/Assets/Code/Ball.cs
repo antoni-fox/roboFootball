@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Forward;
 using UnityEngine;
 
 public class Ball : MonoBehaviour {
     public Rigidbody rigidbodyBall;
     public LayerMask layerMask;
+    public AI forward;
     void CheckOnWall()
     {
         RaycastHit[] hits = new RaycastHit[4];
@@ -28,5 +28,15 @@ public class Ball : MonoBehaviour {
     private void Update()
     {
         CheckOnWall();
+    }
+    public static void Kick(AI thisOwner)
+    {
+        thisOwner.ballClass.forward = thisOwner;
+    }
+    public void RotateBall(Goalkeeper.AI thisOwner)
+    {
+        float angleForward2Goalkeeper = Vector3.Angle(forward.transform.position, thisOwner.transform.position);
+        angleForward2Goalkeeper += 90 + Random.Range(-45, 45);
+        rigidbodyBall.AddRelativeForce(new Vector3(0,angleForward2Goalkeeper,0));
     }
 }

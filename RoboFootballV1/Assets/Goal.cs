@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Forward;
 public class Goal : MonoBehaviour {
     public AI aI;
 	// Use this for initialization
@@ -28,7 +28,6 @@ public class Goal : MonoBehaviour {
                 aI.score++;
                 aI.scoreText.text = aI.score + "";
             }
-
         }
     }
 }
